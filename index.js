@@ -6,29 +6,26 @@ const getComputerChoice = () =>{
 
 const playRound = (playerChoice, computerChoice) => {
     playerChoice = playerChoice.toLowerCase();
+    console.log(computerChoice);
     if (playerChoice === computerChoice) return 'draw';
     switch (playerChoice){
         case 'rock':
             if (computerChoice === 'scissors') return 'you win!';
-            else 'computer wins';
+            else return'computer wins';
+        break;
         case 'scissors':
             if (computerChoice === 'paper') return 'you win!';
             else return 'computer wins';
+            break;
         case 'paper':
             if (computerChoice === 'rock') return 'you win'
             else return 'computer wins'
-        default : 
-            return 'player input is not valid'
+            break;
     }
     
 } 
 
-const playGame =() =>{
-    for (var i = 0;i<5;i++){
-        const playerChoice = prompt('enter your choice from (rock,paper,scissors)');
-        const computerChoice = getComputerChoice();
-        console.log(playerChoice,computerChoice,playRound(playerChoice,computerChoice));
-    }
+const handleClick = (value) =>{
+    console.log(value);
+    console.log(playRound(value,getComputerChoice()));
 }
-
-playGame();
