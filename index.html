@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-</head>
+    <body>
+        <div class="scores">
+            <div id="player-score" class="score"></div>
+            <div id="computer-score" class="score"></div>
+            <p id="winner"></p>
+        </div>
 
-<body>
-    <div class="choices">
-        <button class="choice" value='rock' onclick = "handleClick(value)" >rock</button>
-        <button class="choice" value="paper" onclick = "handleClick(value)">paper</button>
-        <button class="choice" value ='scissors' onclick = "handleClick(value)">scissors</button>
-    </div>
-    <p class=""></p>
+        <div class="choices">
+            <button class="choice" value="rock" onclick="handleClick(value)">
+                rock
+            </button>
+            <button class="choice" value="paper" onclick="handleClick(value)">
+                paper
+            </button>
+            <button
+                class="choice"
+                value="scissors"
+                onclick="handleClick(value)"
+            >
+                scissors
+            </button>
+            <button class="reset" onclick="reset()">reset</button>
+        </div>
 
-    <script src="index.js"></script>
-</body>
-
+        <script src="index.js"></script>
+    </body>
 </html>
