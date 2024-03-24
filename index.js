@@ -1,5 +1,9 @@
 var computerScore = 0;
 var playerScore = 0;
+const winnerDisplay = document.getElementById("winner");
+const computerDisplay = document.getElementById("computer-score");
+const playerDisplay = document.getElementById("player-score");
+winnerDisplay.innerText = "The game has just started!";
 
 const getComputerChoice = () => {
     const choices = ["rock", "paper", "scissors"];
@@ -22,53 +26,48 @@ const getWinner = (player, computer) => {
 };
 
 const handleClick = (value) => {
-    player = value;
-    computer = getComputerChoice();
-    console.log(`${player} vs. ${computer}`);
-    winner = getWinner(player, computer);
-    console.log(winner);
-    
-    if (winner === "player") playerScore++;
-    if (winner === "computer") computerScore++;
-    
-    console.log(
-        `player score : ${playerScore}     computer score: ${computerScore}`
+    if (computerScore < 5 && playerScore < 5) {
+        player = value;
+        computer = getComputerChoice();
+        console.log(`${player} vs. ${computer}`);
+        winner = getWinner(player, computer);
+        console.log(winner);
+
+        if (winner === "player") playerScore++;
+        if (winner === "computer") computerScore++;
+
+        showScores();
+        updateWinnerDisplay(winner);
+    } else
+        alert(
+            `${winner} is the winner, you can reset if you want to play more times`
         );
-    };
-    
-    const reset = () => {
-        playerScore = 0;
-        computerScore = 0;
-        console.log("the game has been reset");
-        console.log(
-        `player score : ${playerScore}     computer score: ${computerScore}`
-        );
-    };
-    
-    
-    // const getPlayerChoice = () => {
-    //     return prompt("please enter your choice here");
-    // };
-    
-    // const evalPlayerChoice = (choice) => {
-    //     choice = choice.toLowerCase();
-    //     while (choice !== "rock" && choice !== "paper" && choice !== "scissors") {
-    //         console.log("invalid choice");
-    //         choice = prompt("please enter a valid choice").toLocaleLowerCase();
-    //     }
-    //     return choice;
-    // };
-    
-    // const playRound = () => {
-    //     playerChoice = evalPlayerChoice(getPlayerChoice());
-    //     playerChoice = playerChoice.toLowerCase();
-    //     computerChoice = getComputerChoice();
-    //     console.log(`${playerChoice} vs. ${computerChoice}`);
-    //     winner = getWinner(playerChoice, computerChoice);
-    //     console.log(winner);
-    // };
-    
-    // for (let index = 0; index < 5; index++) {
-    //     console.log(`round ${index}`);
-    //     playRound();
-    // }
+};
+
+const reset = () => {
+    playerScore = 0;
+    computerScore = 0;
+    winnerDisplay.innerText = "The game has been reset!";
+    console.log("the game has been reset");
+    showScores();
+};
+
+const showScores = () => {
+    console.log(`player: ${playerScore}   computer: ${computerScore}`);
+    if (computerScore.toString() !== computerDisplay.textContent) {
+        computerDisplay.textContent = `computer: ${computerScore}`;
+    }
+    if (playerScore.toString() !== playerDisplay.textContent) {
+        playerDisplay.textContent = `player: ${playerScore}`;
+    }
+};
+
+const updateWinnerDisplay = (winner) => {
+    if (winner === "tie") {
+        winnerDisplay.textContent = "This round is a tie";
+    } else {
+        winnerDisplay.textContent = `The winner is the ${winner}`;
+    }
+};
+
+showScores();
