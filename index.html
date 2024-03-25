@@ -4,27 +4,31 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="stylesheet" href="index.css" />
     </head>
 
     <body>
         <div class="scores">
-            <div id="player-score" class="score"></div>
-            <div id="computer-score" class="score"></div>
-            <p id="winner"></p>
+            <div class="player">
+                <div id="player-choice" class="choice"></div>
+                <div id="player-score" class="score"></div>
+            </div>
+            <div class="computer">
+                <div id="computer-choice" class="choice"></div>
+                <div id="computer-score" class="score"></div>
+            </div>
         </div>
+        <p id="winner"></p>
 
         <div class="choices">
-            <button class="choice" value="rock" onclick="handleClick(value)">
+            <button class="item" value="rock" onclick="handleClick(value)">
                 rock
             </button>
-            <button class="choice" value="paper" onclick="handleClick(value)">
+            <button class="item" value="paper" onclick="handleClick(value)">
                 paper
             </button>
-            <button
-                class="choice"
-                value="scissors"
-                onclick="handleClick(value)"
-            >
+
+            <button class="item" value="scissors" onclick="handleClick(value)">
                 scissors
             </button>
         </div>

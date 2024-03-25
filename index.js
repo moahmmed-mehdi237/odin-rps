@@ -1,14 +1,25 @@
 var computerScore = 0;
 var playerScore = 0;
 const winnerDisplay = document.getElementById("winner");
-const computerDisplay = document.getElementById("computer-score");
-const playerDisplay = document.getElementById("player-score");
+
+const computerScoreDisplay = document.getElementById("computer-score");
+const playerScoreDisplay = document.getElementById("player-score");
+
+const playerChoiceDisplay = document.getElementById("player-choice");
+const computerChoiceDisplay = document.getElementById("computer-choice");
+
 winnerDisplay.innerText = "The game has just started!";
 
 const getComputerChoice = () => {
     const choices = ["rock", "paper", "scissors"];
     const choice = choices[Math.floor(3 * Math.random())];
     return choice;
+};
+// TODO : make a function that shows the player and computer choices using images !
+
+const showChoices = (player, computer) => {
+    playerChoiceDisplay.innerText = `player: ${player}`;
+    computerChoiceDisplay.innerText = `computer: ${computer}`;
 };
 
 const getWinner = (player, computer) => {
@@ -38,6 +49,7 @@ const handleClick = (value) => {
 
         showScores();
         updateWinnerDisplay(winner);
+        showChoices(player, computer);
     } else
         alert(
             `${winner} is the winner, you can reset if you want to play more times`
@@ -47,18 +59,20 @@ const handleClick = (value) => {
 const reset = () => {
     playerScore = 0;
     computerScore = 0;
+
     winnerDisplay.innerText = "The game has been reset!";
     console.log("the game has been reset");
     showScores();
+    showChoices("", "");
 };
 
 const showScores = () => {
     console.log(`player: ${playerScore}   computer: ${computerScore}`);
-    if (computerScore.toString() !== computerDisplay.textContent) {
-        computerDisplay.textContent = `computer: ${computerScore}`;
+    if (computerScore.toString() !== computerScoreDisplay.textContent) {
+        computerScoreDisplay.textContent = `computer: ${computerScore}`;
     }
-    if (playerScore.toString() !== playerDisplay.textContent) {
-        playerDisplay.textContent = `player: ${playerScore}`;
+    if (playerScore.toString() !== playerScoreDisplay.textContent) {
+        playerScoreDisplay.textContent = `player: ${playerScore}`;
     }
 };
 
@@ -71,3 +85,4 @@ const updateWinnerDisplay = (winner) => {
 };
 
 showScores();
+showChoices("", "");
